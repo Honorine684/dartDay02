@@ -28,7 +28,7 @@ int tailleLettre = protocoleAlpha(lettre);
 print("Votre message contient :  $tailleLettre caractères");
 
 // decomposer la lettre
-//print("Votre lettre décomposé donne : ${decomposerMessage(lettre)}");
+print("Votre lettre décomposé donne : ${decomposerMessage(lettre)}");
 
 // test protocole beta
 
@@ -85,9 +85,13 @@ if(action == 2){
 
 print("Le caractère 43 est :");
 extraireMot43(lettre);
+
+
+// protocole de securite
+
+// verifier que le message est vide apres suppression des espaces
+verifierQueLeMessageEstVideSansEspace(lettre);
 }
-
-
 
 
 
@@ -142,9 +146,17 @@ String mettreLettreEnMinuscule(String lettre){
 
 void extraireMot43(String lettre){
 
-  if(lettre.length > 43){
-    print(lettre[43]);
+  if(lettre.length >= 43){
+    print(lettre[42]);
+  }  
+}
+
+void verifierQueLeMessageEstVideSansEspace(String lettre){
+  String lettreSain= netoyerLesEspacesMultiples(lettre);
+  if(lettreSain.length == 0){
+    print("Ce message est vide");
+  }else{
+    print("Le message a gardé ses caractères");
   }
-  
 }
   
