@@ -26,7 +26,7 @@ int tailleLettre = protocoleAlpha(lettre);
 print("Votre message contient :  $tailleLettre caractères");
 
 // decomposer la lettre
-print("Votre lettre décomposé donne : ${decomposerMessage(lettre)}");
+//print("Votre lettre décomposé donne : ${decomposerMessage(lettre)}");
 
 // test protocole beta
 
@@ -35,14 +35,37 @@ print("Votre lettre inversé donne : ");
 print(protocoleBeta(lettre));
 
 // remplacer agent par espion
-print("Le remplacement de agent par espion donne: ");
+/*print("Le remplacement de agent par espion donne: ");
 print(remplacerAgentParEspion(lettre));
 
 // test protocole gamma
 
 // verifier que la lettre commence par cher
-//verifierQueLeMessageCommenceParCher(lettre);
+if(verifierQueLeMessageCommenceParCher(lettre) == true){
+  print("La lettre commence bien par cher");
+}else{
+  print("Ceci ne commence pas par cher");
 }
+
+// verifier que la lettre finit  par cordialement
+if(verifierQueLeMessageFinitParCordialement(lettre) == true){
+  print("La lettre finit bien par cordialement");
+}else{
+  print("Ceci ne finit pas par cordialement");
+}*/
+
+// nettoyer les espaces multiples 
+print("La lettre sans tous ces espaces donne : ");
+print(netoyerLesEspacesMultiples(lettre));
+
+// nettoyer les espaces multiples 
+print("La lettre sans les espaces en debut et fin donne : ");
+print(netoyerLesEspacesDebutEtFin(lettre));
+}
+
+
+
+
 
 
 
@@ -67,13 +90,20 @@ String remplacerAgentParEspion(String lettre){
   return lettreRemplacement;
 }
 
-/*void verifierQueLeMessageCommenceParCher(String lettre){
-  List<dynamic> lettres = decomposerMessage(lettre);
-  for(int i=0;i<lettres.length;){
-    if(lettres[0] == "Cher"){
-      print("Votre lettre commence bien par cher");
-    }else{
-      print("Ceci ne débute pas par cher");
-    }
-  }
-}*/
+bool verifierQueLeMessageCommenceParCher(String lettre){
+  return lettre.toLowerCase().startsWith('cher');
+  
+}
+
+bool verifierQueLeMessageFinitParCordialement(String lettre){
+  return lettre.toLowerCase().endsWith('cordialement');
+ 
+}
+
+String netoyerLesEspacesMultiples(String lettre){
+  return lettre.replaceAll(RegExp(r'\s+'), ' ').trim();
+}
+
+String netoyerLesEspacesDebutEtFin(String lettre){
+  return lettre.trim();
+}
